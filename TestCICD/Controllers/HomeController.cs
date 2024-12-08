@@ -8,16 +8,25 @@ namespace TestCICD.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+
+        public HomeController()
         {
-            _logger = logger;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View(new TestModel());
         }
-
+        [HttpPost]
+        public IActionResult Index(TestModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                model.result = model.firstParam + model.secondParam;
+                return View(model);
+            }
+            return View(model);
+        }
         public IActionResult Privacy()
         {
             return View();
@@ -28,5 +37,6 @@ namespace TestCICD.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
     }
 }

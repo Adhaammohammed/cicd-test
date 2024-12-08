@@ -1,8 +1,23 @@
-﻿@{
+﻿@model TestModel
+@{
     ViewData["Title"] = "Home Page";
 }
+<h1>Add Numbers</h1>
+<form asp-action="Index" method="post">
+    <div>
+        <label for="firstParam">First Number:</label>
+        <input asp-for="firstParam" type="number" />
+    </div>
+    <div>
+        <label for="secondParam">Second Number:</label>
+        <input asp-for="secondParam" type="number" />
+    </div>
+    <div>
+        <button type="submit">Add</button>
+    </div>
+</form>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@if (Model.result != 0)
+{
+    <h2>Result: @Model.result</h2>
+}
