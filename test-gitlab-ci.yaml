@@ -3,22 +3,20 @@ stages:
   - test
 
 variables:
-  # Set the version of .NET SDK you're using (e.g., 6.0 or 7.0)
-  DOTNET_VERSION: "9.0.100"
+  # Specify the version of .NET SDK you are using (e.g., 6.0 or 7.0)
+    DOTNET_VERSION: "9.0.100"
 
 before_script:
-  - apt-get update && apt-get install -y wget curl
-  - wget https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb
-  - sudo dpkg -i packages-microsoft-prod.deb
-  - sudo apt-get update
-  - sudo apt-get install -y dotnet-sdk-$DOTNET_VERSION
+  # Install .NET SDK and other necessary tools
+  - echo "Installing .NET SDK..."
+  - choco install dotnet-sdk --version=%DOTNET_VERSION%
 
 build:
   stage: build
   script:
     - echo "Restoring project dependencies..."
     - dotnet restore
-    - echo "Building project..."
+    - echo "Building the project..."
     - dotnet build --configuration Release
 
 test:
