@@ -4,7 +4,7 @@ stages:
 
 variables:
   # Specify the version of .NET SDK you are using (e.g., 6.0 or 7.0)
-    DOTNET_VERSION: "9.0.100"
+    DOTNET_VERSION: "6.0"
 
 before_script:
   # Install .NET SDK and other necessary tools
