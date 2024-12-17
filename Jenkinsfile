@@ -9,7 +9,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the code from GitHub
-                git 'git@github.com:Adhaammohammed/cicd-test.git'
+            git branch: 'main', url: 'https://github.com/Adhaammohammed/cicd-test.git'
             }
         }
 
