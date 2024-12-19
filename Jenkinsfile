@@ -17,7 +17,7 @@ pipeline {
             steps {
                 // Restore dependencies for your .NET project
                 script {
-                    sh 'dotnet restore'
+                    bat 'dotnet restore'
                 }
             }
         }
@@ -26,7 +26,7 @@ pipeline {
             steps {
                 // Build the project
                 script {
-                    sh 'dotnet build --configuration Release'
+                    bat 'dotnet build --configuration Release'
                 }
             }
         }
@@ -35,7 +35,7 @@ pipeline {
             steps {
                 // Run unit tests using dotnet test
                 script {
-                    sh 'dotnet test --configuration Release'
+                    bat 'dotnet test --configuration Release'
                 }
             }
         }
@@ -44,7 +44,7 @@ pipeline {
             steps {
                 // Optional: Publish build artifacts if needed
                 script {
-                    sh 'dotnet publish --configuration Release --output ./publish'
+                    bat 'dotnet publish --configuration Release --output ./publish'
                 }
             }
         }
